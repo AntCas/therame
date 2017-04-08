@@ -5,20 +5,21 @@
 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript">
+  let step_data = {{ step_data|tojson|safe }};
+  let steps_chart_array = [['Date', 'Steps']];
+  step_data.forEach(function(i) {
+    steps_chart_array.push([Date(i["dateTime"]), Number(i["value"])]);
+  });
+  console.log(steps_chart_array);
+
   google.charts.load('current', {'packages':['corechart']});
   google.charts.setOnLoadCallback(drawChart);
 
   function drawChart() {
-    var data = google.visualization.arrayToDataTable([
-      ['Year', 'Sales', 'Expenses'],
-      ['2004',  1000,      400],
-      ['2005',  1170,      460],
-      ['2006',  660,       1120],
-      ['2007',  1030,      540]
-    ]);
+    var data = google.visualization.arrayToDataTable(steps_chart_array);
 
     var options = {
-      title: 'Mood',
+      title: 'Steps',
       curveType: 'function',
       legend: { position: 'bottom' }
     };
