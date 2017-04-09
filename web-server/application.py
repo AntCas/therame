@@ -34,7 +34,7 @@ def get_emotions():
     except ClientError as e:
         print(e.response['Error']['Message'])
     else:
-        return response
+        return json.loads(json.dumps(response, indent=4, cls=DecimalEncoder)) 
 
 @app.route('/')
 def index():
@@ -45,7 +45,7 @@ def index():
     return render_template(
         'index.html',
         step_data = step_data["activities-steps"],
-        emotions_data = get_emotions()
+        emotions_data = get_emotions()["Items"]
     )
 
 if __name__ == '__main__':

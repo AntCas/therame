@@ -1,0 +1,32 @@
+<div class="chart" id="emotions_chart" style="width: 900px; height: 500px"></div>
+<script type="text/javascript">
+
+  google.charts.load('current', {'packages':['corechart']});
+  google.charts.setOnLoadCallback(drawChart);
+
+  function drawChart() {
+    
+    var dataTable = new google.visualization.DataTable();
+    dataTable.addColumn('date', 'Date');
+    dataTable.addColumn('number', 'Emotion');
+    dataTable.addColumn({type: 'string', role: 'tooltip'});
+
+    let emotions_data = {{ emotions_data|tojson|safe }};
+    let emotions_data_array = []
+    emotions_data.forEach(function(i) {
+        emotions_data_array.push([new Date(i["timestamp"]), Number(i["rating"]), i["emotion"]]);
+    });
+
+    dataTable.addRows(emotions_data_array);
+
+    var options = {
+      title: 'Emotional Well-Being',
+      curveType: 'function',
+      legend: { position: 'bottom' }
+    };
+
+    var chart = new google.visualization.LineChart(document.getElementById('emotions_chart'));
+
+    chart.draw(dataTable, options);
+  }
+</script>
