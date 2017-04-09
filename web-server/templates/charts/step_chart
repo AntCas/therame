@@ -16,7 +16,6 @@
 
     var options = {
       title: 'Activity Level',
-      curveType: 'function',
       legend: { position: 'bottom' }
     };
 
