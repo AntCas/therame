@@ -26,20 +26,43 @@ time, mark, audio, video {
 
 body {
     text-align: center;
-    background: #fbffea;
+    background: #f1f1f1;
 }
 
 h1 {
-    font-size: 3em;
+    font-size: 1.25em;
+    padding-left: 20px;
+    color: white;
+    font-family: sans-serif;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.header {
+    width: 100%;
+    display: block;
+    background: #262626;
+    text-align: left;
+}
+
+h2 {
+    font-size: 2em;
+    font-family: sans-serif;
 }
 
 .content {
     background: white;
     width: 80%;
+    min-height: 800px;
     margin: auto;
     padding: 15px;
 }
 
 .content > .chart {
     margin: auto;
+}
+
+.peekaboo {
+    padding-top: 15px;
+    color: grey;
 }
