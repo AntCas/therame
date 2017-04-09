@@ -45,7 +45,7 @@ def index():
     return render_template(
         'index.html',
         step_data = step_data["activities-steps"],
-        emotions_data = get_emotions()["Items"]
+        emotions_data = sorted(get_emotions()["Items"], key=lambda k: k['timestamp'])
     )
 
 if __name__ == '__main__':
