@@ -15,7 +15,7 @@
     var data = google.visualization.arrayToDataTable(steps_chart_array);
 
     var options = {
-      title: 'Steps',
+      title: 'Activity Level',
       curveType: 'function',
       legend: { position: 'bottom' }
     };
