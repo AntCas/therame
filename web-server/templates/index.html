@@ -1,32 +1,6 @@
 {% extends "layout.html" %}
 {% block content %}
-<div class="chart" id="mood_chart" style="width: 900px; height: 500px"></div>
 
+{% include "charts/step_chart" %}
 
-<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
-  let step_data = {{ step_data|tojson|safe }};
-  let steps_chart_array = [['Date', 'Steps']];
-  step_data.forEach(function(i) {
-    steps_chart_array.push([Date(i["dateTime"]), Number(i["value"])]);
-  });
-  console.log(steps_chart_array);
-
-  google.charts.load('current', {'packages':['corechart']});
-  google.charts.setOnLoadCallback(drawChart);
-
-  function drawChart() {
-    var data = google.visualization.arrayToDataTable(steps_chart_array);
-
-    var options = {
-      title: 'Steps',
-      curveType: 'function',
-      legend: { position: 'bottom' }
-    };
-
-    var chart = new google.visualization.LineChart(document.getElementById('mood_chart'));
-
-    chart.draw(data, options);
-  }
-</script>
 {% endblock %}
